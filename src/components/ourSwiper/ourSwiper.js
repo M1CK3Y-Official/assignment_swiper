@@ -10,10 +10,24 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 // Swiper end
 
-const OurSwiper = ({images}) => {
+const OurSwiper = ({images = [], author='Lena Riis'}) => {
 
     const swiperRef = useRef(null);
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const [sliderImages, setSliderImages] = useState(images);
+
+    useEffect(() => {
+
+        if(sliderImages.length === 0) {
+
+            fetch('/api/images?author=Lena%20Riis').then(res => res.json()).then(data => {
+                console.log('data', data)
+                setSliderImages(data);
+            })
+        }
+
+    }, [sliderImages])
     
 
     useEffect(() => {
@@ -61,6 +75,7 @@ const OurSwiper = ({images}) => {
                 <swiper-container
 
                 ref={swiperRef} 
+                id="swiperRef"
                 // effect={'fade'}
                 space-between={100}
                 slides-per-view={1}
@@ -77,7 +92,7 @@ const OurSwiper = ({images}) => {
 
                 {
                 // For hvert image i images arrayet, returner en swiper-slide
-                images.map( (image) => {
+                sliderImages.map( (image) => {
 
                     return <swiper-slide key={image._id}>
                         

@@ -1,0 +1,26 @@
+.container {
+    background-color: antiquewhite;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    padding: 100px;
+    
+}
+
+.imageBox {
+    position: absolute;
+    padding: 20px;
+    background-color: navy;
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 25px;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
